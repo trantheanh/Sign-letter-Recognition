@@ -49,8 +49,12 @@ def zip_folder(folder_path, save_path):
 
 # Copy files
 def copy_files(file_paths, save_path):
+    print(save_path)
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
     for file_path in file_paths:
-        shutil.copyfile(file_path, os.path.join(save_path, os.path.basename(file_path)))
+        shutil.copy(file_path, os.path.join(save_path, os.path.basename(file_path)))
     return
 
 
@@ -68,12 +72,22 @@ def save_tf_record(save_path):
     return
 
 
-import preprocessor
-import utility
+# import preprocessor
+# import utility
 # zip_files([os.path.join(os.getcwd(), "io.py"),
 #            os.path.join(os.getcwd(), "network.py"),
 #            os.path.join(preprocessor.PATH, "__init__.py")],
 #           save_path=os.path.join(preprocessor.PATH, "target.zip"))
+
+
+# copy_files(
+#     file_paths=[
+#         os.path.join(os.getcwd(), "io.py"),
+#         os.path.join(os.getcwd(), "network.py"),
+#         os.path.join(preprocessor.PATH, "__init__.py")
+#     ],
+#     save_path=os.path.join(preprocessor.PATH, "target")
+#            )
 
 # zip_files(["io.py",
 #            "network.py"],
